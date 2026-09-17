@@ -37,17 +37,24 @@
 -뷰티 인스타 릴스 · 블로그(30대 여성 타겟) → beauty-writer 서브에이전트 (.claude/agents/beauty-writer.md, 스킬이 아님)
 -경쟁사 · 시장 조사 → researcher 서브에이전트 (.claude/agents/researcher.md, 스킬이 아님)
 -리서치 자료 기반 블로그(1인 사업가 대상, 새 정보 추가 없이 리서치 자료만 사용) → blog-writer-research 서브에이전트 (.claude/agents/blog-writer-research.md, 스킬이 아님. blog-writer 스킬과 이름이 비슷하니 혼동하지 말 것)
+-리서치 자료 기반 SNS 캡션(새 정보 추가 없이 리서치 자료만 사용) → sns-writer 서브에이전트 (.claude/agents/sns-writer.md, 스킬이 아님. sns-caption 스킬과 이름이 비슷하니 혼동하지 말 것)
+-리서치 자료 기반 뉴스레터(새 정보 추가 없이 리서치 자료만 사용) → newsletter-writer 서브에이전트 (.claude/agents/newsletter-writer.md, 스킬이 아님. email-newsletter 스킬과 이름이 비슷하니 혼동하지 말 것)
 -맞춤법 · 문장 구조 · 톤 교정(내용 변경 없이 다듬기만) → editor 서브에이전트 (.claude/agents/editor.md, 스킬이 아님)
--output/의 승인된 초안을 blog/articles로 발행(사본 저장, 내용 변경 없음, output 원본 유지) → publisher 서브에이전트 (.claude/agents/publisher.md, 스킬이 아님)
+-output/의 승인된 초안을 종류별 발행 폴더로 발행(사본 저장, 내용 변경 없음, output 원본 유지) → publisher 서브에이전트 (.claude/agents/publisher.md, 스킬이 아님)
+ -블로그 → blog/articles, SNS 캡션 → sns/posts, 뉴스레터 → newsletter/issues
+-고객 문의 응대(faq.md 기반 매칭, 없으면 담당자 연결) → customer-support 서브에이전트 (.claude/agents/customer-support.md, 스킬이 아님)
+-고객목록 기반 연락 초안(contact-criteria.md 기준으로 대상 고객마다 초안 작성, 발송은 하지 않음) → review-manager 서브에이전트 (.claude/agents/review-manager.md, 스킬이 아님)
+-기존 경쟁사 조사 자료 기준으로 새 소식·가격 변동 모니터링(로그인 필요 페이지는 확인하지 않음) → competitor-monitor 서브에이전트 (.claude/agents/competitor-monitor.md, 스킬이 아님)
 
 
 ## 모델 배정
 각 스킬의 frontmatter 'model' 필드로 적용되어 있다. 스킬을 쓰면 해당 모델로 자동 전환된다.
 
--조사 · 정리 → Haiku (seo-checklist, researcher 서브에이전트)
--글 작성 → Sonnet (blog-writer, blog-writer-research, beauty-writer, sns-caption, email-newsletter, ad-copy)
+-조사 · 정리 → Haiku (seo-checklist, researcher 서브에이전트, competitor-monitor 서브에이전트)
+-글 작성 → Sonnet (blog-writer, blog-writer-research, beauty-writer, sns-caption, email-newsletter, ad-copy, sns-writer, newsletter-writer, review-manager)
 -교정 → Sonnet (editor 서브에이전트)
 -발행(파일 저장) → Haiku (publisher 서브에이전트)
+-고객 응대(FAQ 매칭) → Haiku (customer-support 서브에이전트)
 -전략 · 기획: Opus (스킬 없이 전행하는 기획 대화)
 
 ## 참고
