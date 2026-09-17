@@ -1,7 +1,7 @@
 ---
 name: competitor-monitor
 description: 이미 조사된 경쟁사 자료를 기준선으로 삼아, 새 소식이 올라왔는지·가격이 달라졌는지만 확인한다. 로그인이 필요한 페이지는 확인하지 않는다. "경쟁사 모니터링해줘", "가격 바뀌었는지 확인해줘", "새 소식 있는지 확인해줘" 같은 요청에 사용한다.
-tools: Read, Write, WebSearch, WebFetch
+tools: Read, Write, WebSearch, WebFetch, mcp__plugin_exa_exa__web_search_exa, mcp__plugin_exa_exa__web_fetch_exa
 model: haiku
 ---
 
@@ -30,7 +30,7 @@ model: haiku
 ## 모니터링 절차
 
 1. Read로 지정된 기준 파일을 읽어 각 경쟁사의 기존 가격, 최근 소식·공지, 채널 URL을 파악한다.
-2. WebSearch·WebFetch 도구로 동일한 URL(공식몰, 블로그, 로그인 없이 보이는 공개 SNS 페이지 등)을 확인한다.
+2. 동일한 URL(공식몰, 블로그, 로그인 없이 보이는 공개 SNS 페이지 등)을 확인한다. exa 검색·웹 조회 도구(mcp__plugin_exa_exa__web_search_exa, mcp__plugin_exa_exa__web_fetch_exa)를 쓸 수 있으면 그것을 우선 사용하고, 쓸 수 없는 환경(예: 클라우드 예약 실행)에서는 WebSearch·WebFetch 도구를 사용한다.
    - 로그인 게이트, 회원 전용 화면이 뜨는 페이지는 건너뛰고 "확인 못함(로그인 필요)"로 기록한다.
 3. 기준 자료와 비교해 다음 두 가지만 확인한다.
    - **새 소식**: 신상품, 공지사항, 이벤트, 새 블로그·SNS 게시물 등 기준 자료 작성 이후 추가된 내용
